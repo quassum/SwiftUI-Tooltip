@@ -37,8 +37,8 @@ struct ArrowOnlyTooltipConfig: TooltipConfig {
     var arrowHeight: CGFloat = 6
     
     var enableAnimation: Bool = false
-    var animationOffset: CGFloat = 0
-    var animationTime: Double = 0
+    var animationOffset: CGFloat = 10
+    var animationTime: Double = 1
 
     init() {}
 
