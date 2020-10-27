@@ -4,19 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUI-Tooltip",
+    name: "SwiftUITooltip",
     platforms: [
         .iOS(.v13), .macOS(.v10_15), .tvOS(.v13), .watchOS(.v6) 
     ],
     products: [
         .library(
-            name: "SwiftUI-Tooltip",
-            targets: ["SwiftUI-Tooltip"]),
+            name: "SwiftUITooltip",
+            targets: ["SwiftUITooltip"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "SwiftUI-Tooltip",
+            name: "SwiftUITooltip",
             dependencies: []),
 //        .testTarget(
 //            name: "SwiftUI-TooltipTests",
