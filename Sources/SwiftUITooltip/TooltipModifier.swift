@@ -183,7 +183,6 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     }
 }
 
-#if DEBUG
 struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         Text("Say something nice...")
@@ -192,4 +191,3 @@ struct Tooltip_Previews: PreviewProvider {
             }
     }
 }
-#endif
