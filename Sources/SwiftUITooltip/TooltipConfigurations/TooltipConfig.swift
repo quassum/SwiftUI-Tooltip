@@ -19,6 +19,7 @@ protocol TooltipConfig {
     var borderRadius: CGFloat { get set }
     var borderWidth: CGFloat { get set }
     var borderColor: Color { get set }
+    var backgroundColor: Color { get set }
 
     // MARK: - Margins and paddings
 

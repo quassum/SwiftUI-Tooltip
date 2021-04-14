@@ -17,6 +17,7 @@ struct ArrowOnlyTooltipConfig: TooltipConfig {
     var borderRadius: CGFloat = 8
     var borderWidth: CGFloat = 0
     var borderColor: Color = Color.primary
+    var backgroundColor: Color = Color.clear
 
     var contentPaddingLeft: CGFloat = 8
     var contentPaddingRight: CGFloat = 8
