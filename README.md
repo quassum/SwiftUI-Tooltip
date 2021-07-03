@@ -10,7 +10,7 @@ You can add this package to your project using Swift Package Manager. Enter foll
 https://github.com/quassummanus/SwiftUI-Tooltip.git
 ```
 
-We are using semver for versioning, so we would recomment selecting "Up to next major relase" option for this package.
+We are using [semver](https://semver.org) for versioning, so we would recomment selecting "Up to next major relase" option for this package.
 
 After you added the package, all you need to do is import it and you can add a tooltip to any SwiftUI View in that file!
 
