@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ArrowShape: Shape {
+public struct ArrowShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.addLines([

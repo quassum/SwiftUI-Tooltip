@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-protocol TooltipConfig {
+public protocol TooltipConfig {
     // MARK: Alignment
 
     var side: TooltipSide { get set }

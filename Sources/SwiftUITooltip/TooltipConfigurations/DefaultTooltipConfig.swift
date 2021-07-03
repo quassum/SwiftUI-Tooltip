@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DefaultTooltipConfig: TooltipConfig {
+public struct DefaultTooltipConfig: TooltipConfig {
     static var shared = DefaultTooltipConfig()
 
     var side: TooltipSide = .bottom

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ArrowOnlyTooltipConfig: TooltipConfig {
+public struct ArrowOnlyTooltipConfig: TooltipConfig {
     static var shared = ArrowOnlyTooltipConfig()
 
     var side: TooltipSide = .bottom
