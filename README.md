@@ -5,6 +5,18 @@
 SwiftUI does not provide an easy way to show tooltips over exiting views, so we created one!
 The tooltip provideded by this package allows you to put any `View` you want into the tooltip and position it on any side of the other `View`.
 
+## Getting started
+
+You can add this package to your project using Swift Package Manager. Enter following url when adding it to your project package dependencies:
+
+```
+https://github.com/quassummanus/SwiftUI-Tooltip.git
+```
+
+We are using semver for versioning, so we would recomment selecting "Up to next major relase" option for this package.
+
+After you added the package, all you need to do is import it and you can add a tooltip to any SwiftUI View in that file!
+
 ## Usage
 
 ### Example 1
@@ -15,10 +27,13 @@ Below you can see the example of code that is required to create the tooltip and
 *Code:*
 
 ```swift
+import SwiftUITooltip
+...
 Text("Say something nice...")
     .tooltip(.bottom) {
         Text("Something nice!")
     }
+...
 ```
 
 *Result:*
@@ -32,6 +47,9 @@ Second example shows you how you can add jumping animation to the tooltip from t
 *Code:*
 
 ```swift
+import SwiftUI
+import SwiftUITooltip
+
 struct SwiftUIView: View {
     var tooltipConfig = DefaultTooltipConfig()
     

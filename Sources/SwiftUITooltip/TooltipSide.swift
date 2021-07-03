@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-enum TooltipSide: Int {
+public enum TooltipSide: Int {
     case leading = 2
     case center = -1
     case trailing = 6
