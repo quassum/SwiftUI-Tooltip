@@ -1,9 +1,6 @@
 # SwiftUI Tooltip
 
-## Description
-
-SwiftUI does not provide an easy way to show tooltips over exiting views, so we created one!
-The tooltip provideded by this package allows you to put any `View` you want into the tooltip and position it on any side of the other `View`.
+This package provides you with an easy way to show tooltips over any SwiftUI view, since Apple does not provide one.
 
 ## Getting started
 
