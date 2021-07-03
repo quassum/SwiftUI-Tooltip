@@ -13,11 +13,10 @@ let package = Package(
             name: "SwiftUITooltip",
             targets: ["SwiftUITooltip"]),
     ],
-    dependencies: [],
     targets: [
         .target(
             name: "SwiftUITooltip",
-            dependencies: []),
+            exclude: ["images"]),
 //        .testTarget(
 //            name: "SwiftUI-TooltipTests",
 //            dependencies: ["SwiftUI-Tooltip"]),
