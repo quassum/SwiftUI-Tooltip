@@ -40,9 +40,9 @@ public struct DefaultTooltipConfig: TooltipConfig {
     public var animationOffset: CGFloat = 10
     public var animationTime: Double = 1
 
-    init() {}
+    public init() {}
 
-    init(side: TooltipSide) {
+    public init(side: TooltipSide) {
         self.side = side
     }
 }
