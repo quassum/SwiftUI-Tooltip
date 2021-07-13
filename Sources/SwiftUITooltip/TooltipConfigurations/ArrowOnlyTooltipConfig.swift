@@ -40,9 +40,9 @@ struct ArrowOnlyTooltipConfig: TooltipConfig {
     var animationOffset: CGFloat = 10
     var animationTime: Double = 1
 
-    init() {}
+    public init() {}
 
-    init(side: TooltipSide) {
+    public init(side: TooltipSide) {
         self.side = side
     }
 }
