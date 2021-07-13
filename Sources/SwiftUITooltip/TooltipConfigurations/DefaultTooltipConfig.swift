@@ -1,6 +1,5 @@
 //
 //  DefaultTooltipConfig.swift
-//  rythmic
 //
 //  Created by Antoni Silvestrovic on 24/10/2020.
 //  Copyright © 2020 Quassum Manus. All rights reserved.
@@ -8,23 +7,23 @@
 
 import SwiftUI
 
-struct DefaultTooltipConfig: TooltipConfig {
+public struct DefaultTooltipConfig: TooltipConfig {
     static var shared = DefaultTooltipConfig()
 
-    var side: TooltipSide = .bottom
-    var margin: CGFloat = 8
+    public var side: TooltipSide = .bottom
+    public var margin: CGFloat = 8
 
-    var borderRadius: CGFloat = 8
-    var borderWidth: CGFloat = 2
-    var borderColor: Color = Color.primary
-    var backgroundColor: Color = Color.clear
+    public var borderRadius: CGFloat = 8
+    public var borderWidth: CGFloat = 2
+    public var borderColor: Color = Color.primary
+    public var backgroundColor: Color = Color.clear
 
-    var contentPaddingLeft: CGFloat = 8
-    var contentPaddingRight: CGFloat = 8
-    var contentPaddingTop: CGFloat = 4
-    var contentPaddingBottom: CGFloat = 4
+    public var contentPaddingLeft: CGFloat = 8
+    public var contentPaddingRight: CGFloat = 8
+    public var contentPaddingTop: CGFloat = 4
+    public var contentPaddingBottom: CGFloat = 4
 
-    var contentPaddingEdgeInsets: EdgeInsets {
+    public var contentPaddingEdgeInsets: EdgeInsets {
         EdgeInsets(
             top: contentPaddingTop,
             leading: contentPaddingLeft,
@@ -33,17 +32,17 @@ struct DefaultTooltipConfig: TooltipConfig {
         )
     }
 
-    var showArrow: Bool = true
-    var arrowWidth: CGFloat = 12
-    var arrowHeight: CGFloat = 6
+    public var showArrow: Bool = true
+    public var arrowWidth: CGFloat = 12
+    public var arrowHeight: CGFloat = 6
     
-    var enableAnimation: Bool = false
-    var animationOffset: CGFloat = 10
-    var animationTime: Double = 1
+    public var enableAnimation: Bool = false
+    public var animationOffset: CGFloat = 10
+    public var animationTime: Double = 1
 
-    init() {}
+    public init() {}
 
-    init(side: TooltipSide) {
+    public init(side: TooltipSide) {
         self.side = side
     }
 }

@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ArrowShape: Shape {
-    func path(in rect: CGRect) -> Path {
+public struct ArrowShape: Shape {
+    public func path(in rect: CGRect) -> Path {
         var path = Path()
         path.addLines([
             CGPoint(x: 0, y: rect.height),

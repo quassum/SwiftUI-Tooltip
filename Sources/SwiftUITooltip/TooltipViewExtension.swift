@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     func tooltip<TooltipContent: View>(@ViewBuilder content: @escaping () -> TooltipContent) -> some View {
         let config: TooltipConfig = DefaultTooltipConfig.shared
 
