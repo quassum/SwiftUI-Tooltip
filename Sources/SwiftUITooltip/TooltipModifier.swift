@@ -1,6 +1,5 @@
 //
 //  Tooltip.swift
-//  rythmic
 //
 //  Created by Antoni Silvestrovic on 19/10/2020.
 //  Copyright © 2020 Quassum Manus. All rights reserved.
