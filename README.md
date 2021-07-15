@@ -69,6 +69,29 @@ struct SwiftUIView: View {
 
 ![example 2](images/example_2.gif)
 
+## Configuration Reference
+
+Below you can see all the properties that you can set in the configuration.
+
+| Property | Type |
+| ---------- | ------ |
+| side | TooltipSide |
+| margin | CGFloat |
+| borderRadius | CGFloat |
+| borderWidth | CGFloat |
+| borderColor | Color |
+| backgroundColor | Color |
+| contentPaddingLeft | CGFloat |
+| contentPaddingRight | CGFloat |
+| contentPaddingTop | CGFloat |
+| contentPaddingBottom | CGFloat |
+| showArrow | Bool |
+| arrowWidth | CGFloat |
+| arrowHeight | CGFloat |
+| enableAnimation | Bool |
+| animationOffset | CGFloat |
+| animationTime | Double | 
+
 ## Contributing
 
 If you like this package but feel that you need more control or custom implmentation - feel free to open an issue, send a pull request or fork the repo!
