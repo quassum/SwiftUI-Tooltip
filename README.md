@@ -73,28 +73,28 @@ struct SwiftUIView: View {
 
 Below you can see all the properties that you can set in the configuration.
 
-| Property | Type | Description |
-| ---------- | ------ | ------------ |
-| `side` | `TooltipSide` | Side of view that the tooltip should appear on |
-| `margin` | `CGFloat` | Margin from the tooltip to the view it's attached to |
-| `borderRadius` | `CGFloat` | Rounded border control |
-| `borderWidth` | `CGFloat` | Thickness of the border |
-| `borderColor` | `Color` | Border color |
-| `backgroundColor` | `Color` | Background color inside of the tooltip |
-| `contentPaddingLeft` | `CGFloat` | Left padding inside of the tooltip |
-| `contentPaddingRight` | `CGFloat` | Right padding inside of the tooltip |
-| `contentPaddingTop` | `CGFloat` | Top padding inside of the tooltip |
-| `contentPaddingBottom` | `CGFloat` | Bottom padding inside of the tooltip |
-| `showArrow` | `Bool` | Whether to show or hide the arrow |
-| `arrowWidth` | `CGFloat` | Width of the base of the triangle |
-| `arrowHeight` | `CGFloat` | Height of the triangle |
-| `enableAnimation` | `Bool` | Whether to bounce the tooltip or not |
-| `animationOffset` | `CGFloat` | Delay between tooltip bouncing animations |
-| `animationTime` | `Double` | How long should the tooltip bounce last |
+| Property               | Type          | Description                                          |
+| ---------------------- | ------------- | ---------------------------------------------------- |
+| `side`                 | `TooltipSide` | Side of view that the tooltip should appear on       |
+| `margin`               | `CGFloat`     | Margin from the tooltip to the view it's attached to |
+| `borderRadius`         | `CGFloat`     | Rounded border control                               |
+| `borderWidth`          | `CGFloat`     | Thickness of the border                              |
+| `borderColor`          | `Color`       | Border color                                         |
+| `backgroundColor`      | `Color`       | Background color inside of the tooltip               |
+| `contentPaddingLeft`   | `CGFloat`     | Left padding inside of the tooltip                   |
+| `contentPaddingRight`  | `CGFloat`     | Right padding inside of the tooltip                  |
+| `contentPaddingTop`    | `CGFloat`     | Top padding inside of the tooltip                    |
+| `contentPaddingBottom` | `CGFloat`     | Bottom padding inside of the tooltip                 |
+| `showArrow`            | `Bool`        | Whether to show or hide the arrow                    |
+| `arrowWidth`           | `CGFloat`     | Width of the base of the triangle                    |
+| `arrowHeight`          | `CGFloat`     | Height of the triangle                               |
+| `enableAnimation`      | `Bool`        | Whether to bounce the tooltip or not                 |
+| `animationOffset`      | `CGFloat`     | Delay between tooltip bouncing animations            |
+| `animationTime`        | `Double`      | How long should the tooltip bounce last              |
 
 ## Contributing
 
-If you like this package but feel that you need more control or custom implmentation - feel free to open an issue, send a pull request or fork the repo!
+If you like this package but feel that you need more control or custom implementation - feel free to open an issue, send a pull request or fork the repo!
 
 ## Contributors
 
