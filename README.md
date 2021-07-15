@@ -1,5 +1,9 @@
 # SwiftUI Tooltip
 
+![Workflow checks](https://img.shields.io/github/checks-status/quassummanus/SwiftUI-Tooltip/main)
+![Release version](https://img.shields.io/github/v/release/quassummanus/SwiftUI-Tooltip)
+![License](https://img.shields.io/github/license/quassummanus/SwiftUI-Tooltip)
+
 This package provides you with an easy way to show tooltips over any SwiftUI view, since Apple does not provide one.
 
 ## Getting started
