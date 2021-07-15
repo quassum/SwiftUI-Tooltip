@@ -96,9 +96,10 @@ Below you can see all the properties that you can set in the configuration.
 
 If you like this package but feel that you need more control or custom implmentation - feel free to open an issue, send a pull request or fork the repo!
 
-## Author
+## Contributors
 
-This package was created by [Antoni Silvestrovic](https://github.com/bring-shrubbery)
+- [Antoni Silvestrovic (author)](https://github.com/bring-shrubbery)
+- [subarnasantra](https://github.com/subarnasantra)
 
 ## License
 
