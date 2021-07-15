@@ -10,33 +10,33 @@ import SwiftUI
 public protocol TooltipConfig {
     // MARK: - Alignment
 
-    public var side: TooltipSide { get set }
-    public var margin: CGFloat { get set }
+    var side: TooltipSide { get set }
+    var margin: CGFloat { get set }
 
     // MARK: - Tooltip container
 
-    public var borderRadius: CGFloat { get set }
-    public var borderWidth: CGFloat { get set }
-    public var borderColor: Color { get set }
-    public var backgroundColor: Color { get set }
+    var borderRadius: CGFloat { get set }
+    var borderWidth: CGFloat { get set }
+    var borderColor: Color { get set }
+    var backgroundColor: Color { get set }
 
     // MARK: - Margins and paddings
 
-    public var contentPaddingLeft: CGFloat { get set }
-    public var contentPaddingRight: CGFloat { get set }
-    public var contentPaddingTop: CGFloat { get set }
-    public var contentPaddingBottom: CGFloat { get set }
+    var contentPaddingLeft: CGFloat { get set }
+    var contentPaddingRight: CGFloat { get set }
+    var contentPaddingTop: CGFloat { get set }
+    var contentPaddingBottom: CGFloat { get set }
 
-    public var contentPaddingEdgeInsets: EdgeInsets { get }
+    var contentPaddingEdgeInsets: EdgeInsets { get }
 
     // MARK: - Tooltip arrow
 
-    public var showArrow: Bool { get set }
-    public var arrowWidth: CGFloat { get set }
-    public var arrowHeight: CGFloat { get set }
+    var showArrow: Bool { get set }
+    var arrowWidth: CGFloat { get set }
+    var arrowHeight: CGFloat { get set }
     
     // MARK: - Animation settings
-    public var enableAnimation: Bool { get set }
-    public var animationOffset: CGFloat { get set }
-    public var animationTime: Double { get set }
+    var enableAnimation: Bool { get set }
+    var animationOffset: CGFloat { get set }
+    var animationTime: Double { get set }
 }
