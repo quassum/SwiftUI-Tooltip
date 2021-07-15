@@ -1,6 +1,5 @@
 //
 //  TooltipConfig.swift
-//  rythmic
 //
 //  Created by Antoni Silvestrovic on 22/10/2020.
 //  Copyright © 2020 Quassum Manus. All rights reserved.
@@ -19,6 +18,7 @@ public protocol TooltipConfig {
     var borderRadius: CGFloat { get set }
     var borderWidth: CGFloat { get set }
     var borderColor: Color { get set }
+    var backgroundColor: Color { get set }
 
     // MARK: - Margins and paddings
 

@@ -1,6 +1,5 @@
 //
 //  ArrowOnlyTooltipConfig.swift
-//  rythmic
 //
 //  Created by Antoni Silvestrovic on 24/10/2020.
 //  Copyright © 2020 Quassum Manus. All rights reserved.
@@ -17,6 +16,7 @@ public struct ArrowOnlyTooltipConfig: TooltipConfig {
     public var borderRadius: CGFloat = 8
     public var borderWidth: CGFloat = 0
     public var borderColor: Color = Color.primary
+    public var backgroundColor: Color = Color.clear
 
     public var contentPaddingLeft: CGFloat = 8
     public var contentPaddingRight: CGFloat = 8
