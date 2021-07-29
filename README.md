@@ -100,6 +100,8 @@ Below you can see all the properties that you can set in the configuration.
 
 If you like this package but feel that you need more control or custom implementation - feel free to open an issue, send a pull request or fork the repo!
 
+**Reward function:** Contributors with even smallest PRs will be added to the list in the [Contributors](https://github.com/quassummanus/SwiftUI-Tooltip#contributors) section!
+
 ## Contributors
 
 - [Antoni Silvestrovic (author)](https://github.com/bring-shrubbery)
