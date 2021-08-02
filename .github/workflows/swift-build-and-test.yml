@@ -1,0 +1,20 @@
+name: Build Swift Package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: swift build -v
+#       TODO: Re-enable this line when tests are added
+#     - name: Run tests
+#       run: swift test -v
