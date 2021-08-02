@@ -178,6 +178,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 ZStack {
                     content
                         .padding(self.config.contentPaddingEdgeInsets)
+                        .fixedSize()
                 }
                 .background(self.sizeMeasurer)
                     .overlay(self.arrowView)
