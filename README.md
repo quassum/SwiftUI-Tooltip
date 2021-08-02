@@ -20,7 +20,7 @@ After you added the package, all you need to do is import it and you can add a t
 
 ## Usage
 
-### Example 1
+### Basic use case
 
 As the first example, the `Text` view is provided as the tooltip content and it's attached to the other `Text` view.
 Below you can see the example of code that is required to create the tooltip and the result you see on the screen.
@@ -41,7 +41,7 @@ Text("Say something nice...")
 
 ![example 1](images/example_1.jpg)
 
-### Example 2
+### Using custom configuration to add a jumping animation
 
 Second example shows you how you can add jumping animation to the tooltip from the first example.
 
