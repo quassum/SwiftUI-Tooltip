@@ -15,7 +15,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SwiftUITooltip",
-            exclude: ["images"]),
+            name: "SwiftUITooltip"
+        )
     ]
 )
