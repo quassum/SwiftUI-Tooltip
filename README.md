@@ -6,6 +6,10 @@
 
 This package provides you with an easy way to show tooltips over any SwiftUI view, since Apple does not provide one.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/29360707/146054113-e5e2f599-4427-4e75-b2be-eeb2e80f0958.png" alt="preview" width="500px" />    
+</p>
+
 ## Getting started
 
 You can add this package to your project using Swift Package Manager. Enter following url when adding it to your project package dependencies:
