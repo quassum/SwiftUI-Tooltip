@@ -110,6 +110,7 @@ If you like this package but feel that you need more control or custom implement
 
 - [Antoni Silvestrovic (author)](https://github.com/bring-shrubbery)
 - [subarnasantra](https://github.com/subarnasantra)
+- [Ariel Elkin](https://github.com/arielelkin)
 
 ## License
 
