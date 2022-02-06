@@ -4,6 +4,8 @@
 ![Release version](https://img.shields.io/github/v/release/quassummanus/SwiftUI-Tooltip)
 ![License](https://img.shields.io/github/license/quassummanus/SwiftUI-Tooltip)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/bring.shrubbery)
+
 This package provides you with an easy way to show tooltips over any SwiftUI view, since Apple does not provide one.
 
 <p align="center">
