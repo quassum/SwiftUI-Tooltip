@@ -129,8 +129,13 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         return ArrowShape()
             .rotation(Angle(radians: self.arrowRotation))
             .stroke(self.config.borderColor)
-            .background(ArrowShape().rotation(Angle(radians: self.arrowRotation)).foregroundColor(self.config.backgroundColor))
-            .frame(width: self.config.arrowWidth, height: self.config.arrowHeight)
+            .background(ArrowShape()
+                .offset(x: 0, y: 1)
+                .rotation(Angle(radians: self.arrowRotation))
+                .frame(width: self.config.arrowWidth+2, height: self.config.arrowHeight+1)
+                .foregroundColor(self.config.backgroundColor)
+                
+            ).frame(width: self.config.arrowWidth, height: self.config.arrowHeight)
             .offset(x: self.arrowOffsetX, y: self.arrowOffsetY)
     }
 
@@ -158,23 +163,13 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     var tooltipBody: some View {
         GeometryReader { g in
             ZStack {
-                
-            Rectangle()
-                .frame(
-                    width: self.config.arrowWidth,
-                    height: self.config.borderWidth)
-                .rotationEffect(Angle(radians: self.arrowRotation))
-                .offset(
-                    x: self.arrowOffsetX,
-                    y: self.contentHeight/2)
-                .foregroundColor(self.config.backgroundColor)
-                
                 RoundedRectangle(cornerRadius: self.config.borderRadius)
                     .stroke(self.config.borderWidth == 0 ? Color.clear : self.config.borderColor)
                     .background(RoundedRectangle(cornerRadius: self.config.borderRadius)
                                 .foregroundColor(self.config.backgroundColor))
                     .frame(width: self.contentWidth, height: self.contentHeight)
                     .mask(self.arrowCutoutMask)
+                
                 ZStack {
                     content
                         .padding(self.config.contentPaddingEdgeInsets)
@@ -201,11 +196,14 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
 struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-        Text("Say something nice...")
-            .tooltip(.top, config: DefaultTooltipConfig()) {
+        var config = DefaultTooltipConfig(side: .top)
+        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
+        
+        
+        return VStack {
+            Text("Say...").tooltip(config: config) {
                 Text("Something nice!")
             }
-        }
+        }.previewDevice(.init(stringLiteral: "iPhone 12 mini"))
     }
 }
