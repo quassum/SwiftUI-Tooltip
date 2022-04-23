@@ -191,8 +191,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay(isEnabled.wrappedValue ? tooltipBody : nil)
-            .transition(.opacity)
+            .overlay(isEnabled.wrappedValue ? tooltipBody.transition(.opacity) : nil)            
     }
 }
 
