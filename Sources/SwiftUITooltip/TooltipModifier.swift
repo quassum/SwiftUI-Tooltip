@@ -179,9 +179,8 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 }
                 .background(self.sizeMeasurer)
                     .overlay(self.arrowView)
-            }
+            }            
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
-            .animation(.easeInOut)
             .onAppear {
                 self.dispatchAnimation()
             }
@@ -193,6 +192,9 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(isEnabled.wrappedValue ? tooltipBody : nil)
+            .transition(
+                AnyTransition.opacity.combined(with: .scale(scale: 1.1))
+            )
     }
 }
 
