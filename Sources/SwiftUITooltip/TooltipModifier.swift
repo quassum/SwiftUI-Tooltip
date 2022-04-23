@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TooltipModifier<TooltipContent: View>: ViewModifier {
     // MARK: - Uninitialised properties
-
+    var isEnabled: Binding<Bool>
     var config: TooltipConfig
     var content: TooltipContent
 
+
     // MARK: - Initialisers
 
-    init(config: TooltipConfig, @ViewBuilder content: @escaping () -> TooltipContent) {
+    init(isEnabled: Binding<Bool>, config: TooltipConfig, @ViewBuilder content: @escaping () -> TooltipContent) {
+        self.isEnabled = isEnabled
         self.config = config
         self.content = content()
     }
@@ -190,7 +192,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay(tooltipBody)
+            .overlay(isEnabled.wrappedValue ? tooltipBody : nil)
     }
 }
 
@@ -201,7 +203,7 @@ struct Tooltip_Previews: PreviewProvider {
         
         
         return VStack {
-            Text("Say...").tooltip(config: config) {
+            Text("Say...").tooltip(isEnabled: .constant(true), config: config) {
                 Text("Something nice!")
             }
         }.previewDevice(.init(stringLiteral: "iPhone 12 mini"))
