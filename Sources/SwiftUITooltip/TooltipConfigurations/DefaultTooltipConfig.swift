@@ -40,6 +40,8 @@ public struct DefaultTooltipConfig: TooltipConfig {
     public var animationOffset: CGFloat = 10
     public var animationTime: Double = 1
 
+    public var transition: AnyTransition = .opacity
+
     public init() {}
 
     public init(side: TooltipSide) {

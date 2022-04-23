@@ -39,4 +39,6 @@ public protocol TooltipConfig {
     var enableAnimation: Bool { get set }
     var animationOffset: CGFloat { get set }
     var animationTime: Double { get set }
+
+    var transition: AnyTransition { get set }
 }
