@@ -31,4 +31,18 @@ public extension View {
 
         return modifier(TooltipModifier(enabled: enabled, config: config, content: content))
     }
+
+    func tooltip<TooltipContent: View>(_ side: TooltipSide, @ViewBuilder content: @escaping () -> TooltipContent) -> some View {
+        var config = DefaultTooltipConfig.shared
+        config.side = side
+
+        return modifier(TooltipModifier(enabled: true, config: config, content: content))
+    }
+
+    func tooltip<TooltipContent: View>(_ side: TooltipSide, config: TooltipConfig, @ViewBuilder content: @escaping () -> TooltipContent) -> some View {
+        var config = config
+        config.side = side
+
+        return modifier(TooltipModifier(enabled: true, config: config, content: content))
+    }
 }
