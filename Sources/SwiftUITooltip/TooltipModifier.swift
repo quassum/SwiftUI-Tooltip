@@ -202,7 +202,7 @@ struct Tooltip_Previews: PreviewProvider {
         
         
         return VStack {
-            Text("Say...").tooltip(true, config: config) {
+            Text("Say...").tooltip(config: config) {
                 Text("Something nice!")
             }
         }.previewDevice(.init(stringLiteral: "iPhone 12 mini"))
