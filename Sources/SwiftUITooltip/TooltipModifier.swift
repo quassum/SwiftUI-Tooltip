@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TooltipModifier<TooltipContent: View>: ViewModifier {
     // MARK: - Uninitialised properties
-
+    var enabled: Bool
     var config: TooltipConfig
     var content: TooltipContent
 
+
     // MARK: - Initialisers
 
-    init(config: TooltipConfig, @ViewBuilder content: @escaping () -> TooltipContent) {
+    init(enabled: Bool, config: TooltipConfig, @ViewBuilder content: @escaping () -> TooltipContent) {
+        self.enabled = enabled
         self.config = config
         self.content = content()
     }
@@ -179,7 +181,6 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                     .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
-            .animation(.easeInOut)
             .onAppear {
                 self.dispatchAnimation()
             }
@@ -190,7 +191,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay(tooltipBody)
+            .overlay(enabled ? tooltipBody.transition(config.transition) : nil)
     }
 }
 
