@@ -1,9 +1,6 @@
 # SwiftUI Tooltip
 
-![Workflow checks](https://img.shields.io/github/checks-status/
-
-
-manus/SwiftUI-Tooltip/main)
+![Workflow checks](https://img.shields.io/github/checks-status/quassum/SwiftUI-Tooltip/main)
 ![Release version](https://img.shields.io/github/v/release/quassum/SwiftUI-Tooltip)
 ![License](https://img.shields.io/github/license/quassum/SwiftUI-Tooltip)
 
