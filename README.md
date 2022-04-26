@@ -1,8 +1,11 @@
 # SwiftUI Tooltip
 
-![Workflow checks](https://img.shields.io/github/checks-status/quassummanus/SwiftUI-Tooltip/main)
-![Release version](https://img.shields.io/github/v/release/quassummanus/SwiftUI-Tooltip)
-![License](https://img.shields.io/github/license/quassummanus/SwiftUI-Tooltip)
+![Workflow checks](https://img.shields.io/github/checks-status/
+
+
+manus/SwiftUI-Tooltip/main)
+![Release version](https://img.shields.io/github/v/release/quassum/SwiftUI-Tooltip)
+![License](https://img.shields.io/github/license/quassum/SwiftUI-Tooltip)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/bring.shrubbery)
 
@@ -17,7 +20,7 @@ This package provides you with an easy way to show tooltips over any SwiftUI vie
 You can add this package to your project using Swift Package Manager. Enter following url when adding it to your project package dependencies:
 
 ```
-https://github.com/quassummanus/SwiftUI-Tooltip.git
+https://github.com/quassum/SwiftUI-Tooltip.git
 ```
 
 We are using [semver](https://semver.org) for versioning, so we would recomment selecting "Up to next major relase" option for this package.
@@ -106,13 +109,14 @@ Below you can see all the properties that you can set in the configuration.
 
 If you like this package but feel that you need more control or custom implementation - feel free to open an issue, send a pull request or fork the repo!
 
-**Reward function:** Contributors with even smallest PRs will be added to the list in the [Contributors](https://github.com/quassummanus/SwiftUI-Tooltip#contributors) section!
+**Reward function:** Contributors with even smallest PRs will be added to the list in the [Contributors](https://github.com/quassum/SwiftUI-Tooltip#contributors) section!
 
 ## Contributors
 
 - [Antoni Silvestrovic (author)](https://github.com/bring-shrubbery)
 - [subarnasantra](https://github.com/subarnasantra)
 - [Ariel Elkin](https://github.com/arielelkin)
+- [William Chen](https://github.com/chenium)
 
 ## License
 
