@@ -47,6 +47,23 @@ Text("Say something nice...")
 
 ![example 1](images/example_1.jpg)
 
+### Controlling whether the tooltip is present
+
+You can cantrol whether the tooltip is presented or not through the `_ enabled: Binding<Bool>` argument. Below you can see an example of how this would look like.
+
+```swift
+@State var tooltipVisible = false
+...
+Button("Toggle tooltip") {
+  self.tooltipVisible = !self.tooltipVisible
+}
+...
+Text("I'm the confusing text.")
+  .tooltip(self.tooltipVisible) {
+    Text("I'm the text explaining the confusing text.")
+  }
+```
+
 ### Using custom configuration to add a jumping animation
 
 Second example shows you how you can add jumping animation to the tooltip from the first example.
