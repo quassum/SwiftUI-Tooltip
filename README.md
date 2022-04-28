@@ -55,13 +55,13 @@ You can cantrol whether the tooltip is presented or not through the `_ enabled: 
 @State var tooltipVisible = false
 ...
 Button("Toggle tooltip") {
-  self.tooltipVisible = !self.tooltipVisible
+    self.tooltipVisible = !self.tooltipVisible
 }
 ...
 Text("I'm the confusing text.")
-  .tooltip(self.tooltipVisible) {
-    Text("I'm the text explaining the confusing text.")
-  }
+    .tooltip(self.tooltipVisible) {
+        Text("I'm the text explaining the confusing text.")
+    }
 ```
 
 ### Using custom configuration to add a jumping animation
