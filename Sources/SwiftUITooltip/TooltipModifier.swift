@@ -128,7 +128,9 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     }
 
     private var arrowView: some View {
-        return ArrowShape()
+        
+        
+        return config.showArrow ?  ArrowShape()
             .rotation(Angle(radians: self.arrowRotation))
             .stroke(self.config.borderColor)
             .background(ArrowShape()
@@ -138,7 +140,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 .foregroundColor(self.config.backgroundColor)
                 
             ).frame(width: self.config.arrowWidth, height: self.config.arrowHeight)
-            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY)
+            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY) : nil
     }
 
     private var arrowCutoutMask: some View {
@@ -202,7 +204,7 @@ struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
         config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
-        
+        config.showArrow = false
         
         return VStack {
             Text("Say...").tooltip(config: config) {
