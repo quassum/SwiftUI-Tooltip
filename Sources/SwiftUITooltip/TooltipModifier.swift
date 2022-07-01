@@ -148,15 +148,18 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                     width: self.contentWidth + self.config.borderWidth * 2,
                     height: self.contentHeight + self.config.borderWidth * 2)
                 .foregroundColor(.white)
-            Rectangle()
-                .frame(
-                    width: self.config.arrowWidth,
-                    height: self.config.arrowHeight + self.config.borderWidth)
-                .rotationEffect(Angle(radians: self.arrowRotation))
-                .offset(
-                    x: self.arrowOffsetX,
-                    y: self.arrowOffsetY)
-                .foregroundColor(.black)
+            
+            if config.showArrow {
+                Rectangle()
+                    .frame(
+                        width: self.config.arrowWidth,
+                        height: self.config.arrowHeight + self.config.borderWidth)
+                    .rotationEffect(Angle(radians: self.arrowRotation))
+                    .offset(
+                        x: self.arrowOffsetX,
+                        y: self.arrowOffsetY)
+                    .foregroundColor(.black)
+            }
         }
         .compositingGroup()
         .luminanceToAlpha()
