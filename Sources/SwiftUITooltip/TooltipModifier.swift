@@ -174,7 +174,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                                 .foregroundColor(self.config.backgroundColor))
                     .frame(width: self.contentWidth, height: self.contentHeight)
                     .mask(self.arrowCutoutMask)
-                
+                    .shadow(radius: 8)
                 ZStack {
                     content
                         .padding(self.config.contentPaddingEdgeInsets)
@@ -184,7 +184,6 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                     .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
-            .zIndex(.infinity)
             .onAppear {
                 self.dispatchAnimation()
             }
