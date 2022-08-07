@@ -184,6 +184,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                     .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
+            .zIndex(.infinity)
             .onAppear {
                 self.dispatchAnimation()
             }
