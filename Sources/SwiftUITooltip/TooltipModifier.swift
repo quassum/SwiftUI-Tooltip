@@ -105,10 +105,13 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     private func dispatchAnimation() {
         if (config.enableAnimation) {
             DispatchQueue.main.asyncAfter(deadline: .now() + config.animationTime) {
-                self.animationOffset = config.animationOffset
+                withAnimation(.spring()) {
+                    self.animationOffset = config.animationOffset
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + config.animationTime*0.1) {
-                    self.animationOffset = 0
-                    
+                    withAnimation(.spring()) {
+                        self.animationOffset = 0
+                    }
                     self.dispatchAnimation()
                 }
             }
@@ -199,7 +202,7 @@ struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
         config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
-        
+        config.enableAnimation = true
         
         return VStack {
             Text("Say...").tooltip(config: config) {
