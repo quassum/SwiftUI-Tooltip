@@ -12,6 +12,7 @@ public protocol TooltipConfig {
 
     var side: TooltipSide { get set }
     var margin: CGFloat { get set }
+    var zIndex: Double { get set }
 
     // MARK: - Tooltip container
 
