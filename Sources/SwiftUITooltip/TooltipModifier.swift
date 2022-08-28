@@ -28,6 +28,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     @State private var contentHeight: CGFloat = 10
     
     @State var animationOffset: CGFloat = 0
+    @State var animation: Optional<Animation> = nil
 
     // MARK: - Computed properties
 
@@ -106,6 +107,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         if (config.enableAnimation) {
             DispatchQueue.main.asyncAfter(deadline: .now() + config.animationTime) {
                 self.animationOffset = config.animationOffset
+                self.animation = config.animation
                 DispatchQueue.main.asyncAfter(deadline: .now() + config.animationTime*0.1) {
                     self.animationOffset = 0
                     
@@ -191,6 +193,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                     .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
+            .animation(self.animation)
             .onAppear {
                 self.dispatchAnimation()
             }
@@ -208,7 +211,10 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
-        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
+//        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
+        config.enableAnimation = true
+        config.animationOffset = 10
+        config.animationTime = 1
         
         
         return VStack {

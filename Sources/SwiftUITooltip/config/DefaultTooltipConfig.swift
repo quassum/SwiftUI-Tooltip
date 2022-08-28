@@ -39,6 +39,7 @@ public struct DefaultTooltipConfig: TooltipConfig {
     public var enableAnimation: Bool = false
     public var animationOffset: CGFloat = 10
     public var animationTime: Double = 1
+    public var animation: Optional<Animation> = .easeInOut
 
     public var transition: AnyTransition = .opacity
 
