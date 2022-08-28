@@ -31,23 +31,23 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     // MARK: - Computed properties
 
-    var arrowRotation: Double { Double(config.side.rawValue) * .pi / 4 }
-    var actualArrowHeight: CGFloat { config.showArrow ? config.arrowHeight : 0 }
+    var showArrow: Bool { config.showArrow && config.side.shouldShowArrow() }
+    var actualArrowHeight: CGFloat { self.showArrow ? config.arrowHeight : 0 }
 
     var arrowOffsetX: CGFloat {
         switch config.side {
         case .bottom, .center, .top:
             return 0
-        case .leading:
+        case .left:
             return (contentWidth / 2 + config.arrowHeight / 2)
-        case .leadingTop, .leadingBottom:
+        case .topLeft, .bottomLeft:
             return (contentWidth / 2
                 + config.arrowHeight / 2
                 - config.borderRadius / 2
                 - config.borderWidth / 2)
-        case .trailing:
+        case .right:
             return -(contentWidth / 2 + config.arrowHeight / 2)
-        case .trailingTop, .trailingBottom:
+        case .topRight, .bottomRight:
             return -(contentWidth / 2
                 + config.arrowHeight / 2
                 - config.borderRadius / 2
@@ -57,18 +57,18 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     var arrowOffsetY: CGFloat {
         switch config.side {
-        case .leading, .center, .trailing:
+        case .left, .center, .right:
             return 0
         case .top:
             return (contentHeight / 2 + config.arrowHeight / 2)
-        case .trailingTop, .leadingTop:
+        case .topRight, .topLeft:
             return (contentHeight / 2
                 + config.arrowHeight / 2
                 - config.borderRadius / 2
                 - config.borderWidth / 2)
         case .bottom:
             return -(contentHeight / 2 + config.arrowHeight / 2)
-        case .leadingBottom, .trailingBottom:
+        case .bottomLeft, .bottomRight:
             return -(contentHeight / 2
                 + config.arrowHeight / 2
                 - config.borderRadius / 2
@@ -80,9 +80,9 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     private func offsetHorizontal(_ g: GeometryProxy) -> CGFloat {
         switch config.side {
-        case .leading, .leadingTop, .leadingBottom:
+        case .left, .topLeft, .bottomLeft:
             return -(contentWidth + config.margin + actualArrowHeight + animationOffset)
-        case .trailing, .trailingTop, .trailingBottom:
+        case .right, .topRight, .bottomRight:
             return g.size.width + config.margin + actualArrowHeight + animationOffset
         case .top, .center, .bottom:
             return (g.size.width - contentWidth) / 2
@@ -91,11 +91,11 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
     private func offsetVertical(_ g: GeometryProxy) -> CGFloat {
         switch config.side {
-        case .top, .trailingTop, .leadingTop:
+        case .top, .topRight, .topLeft:
             return -(contentHeight + config.margin + actualArrowHeight + animationOffset)
-        case .bottom, .leadingBottom, .trailingBottom:
+        case .bottom, .bottomLeft, .bottomRight:
             return g.size.height + config.margin + actualArrowHeight + animationOffset
-        case .leading, .center, .trailing:
+        case .left, .center, .right:
             return (g.size.height - contentHeight) / 2
         }
     }
@@ -128,53 +128,63 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     }
 
     private var arrowView: some View {
-        return ArrowShape()
-            .rotation(Angle(radians: self.arrowRotation))
-            .stroke(self.config.borderColor)
+        guard let arrowAngle = config.side.getArrowAngleRadians() else {
+            return AnyView(EmptyView())
+        }
+        
+        return AnyView(ArrowShape()
+            .rotation(Angle(radians: arrowAngle))
+            .stroke(config.borderColor)
             .background(ArrowShape()
                 .offset(x: 0, y: 1)
-                .rotation(Angle(radians: self.arrowRotation))
-                .frame(width: self.config.arrowWidth+2, height: self.config.arrowHeight+1)
-                .foregroundColor(self.config.backgroundColor)
+                .rotation(Angle(radians: arrowAngle))
+                .frame(width: config.arrowWidth+2, height: config.arrowHeight+1)
+                .foregroundColor(config.backgroundColor)
                 
-            ).frame(width: self.config.arrowWidth, height: self.config.arrowHeight)
-            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY)
+            ).frame(width: config.arrowWidth, height: config.arrowHeight)
+            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY))
     }
 
     private var arrowCutoutMask: some View {
-        return ZStack {
-            Rectangle()
-                .frame(
-                    width: self.contentWidth + self.config.borderWidth * 2,
-                    height: self.contentHeight + self.config.borderWidth * 2)
-                .foregroundColor(.white)
-            Rectangle()
-                .frame(
-                    width: self.config.arrowWidth,
-                    height: self.config.arrowHeight + self.config.borderWidth)
-                .rotationEffect(Angle(radians: self.arrowRotation))
-                .offset(
-                    x: self.arrowOffsetX,
-                    y: self.arrowOffsetY)
-                .foregroundColor(.black)
+        guard let arrowAngle = config.side.getArrowAngleRadians() else {
+            return AnyView(EmptyView())
         }
-        .compositingGroup()
-        .luminanceToAlpha()
+        
+        return AnyView(
+            ZStack {
+                Rectangle()
+                    .frame(
+                        width: self.contentWidth + config.borderWidth * 2,
+                        height: self.contentHeight + config.borderWidth * 2)
+                    .foregroundColor(.white)
+                Rectangle()
+                    .frame(
+                        width: config.arrowWidth,
+                        height: config.arrowHeight + config.borderWidth)
+                    .rotationEffect(Angle(radians: arrowAngle))
+                    .offset(
+                        x: self.arrowOffsetX,
+                        y: self.arrowOffsetY)
+                    .foregroundColor(.black)
+            }
+            .compositingGroup()
+            .luminanceToAlpha()
+        )
     }
 
     var tooltipBody: some View {
         GeometryReader { g in
             ZStack {
-                RoundedRectangle(cornerRadius: self.config.borderRadius)
-                    .stroke(self.config.borderWidth == 0 ? Color.clear : self.config.borderColor)
-                    .background(RoundedRectangle(cornerRadius: self.config.borderRadius)
-                                .foregroundColor(self.config.backgroundColor))
+                RoundedRectangle(cornerRadius: config.borderRadius)
+                    .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
+                    .background(RoundedRectangle(cornerRadius: config.borderRadius)
+                                .foregroundColor(config.backgroundColor))
                     .frame(width: self.contentWidth, height: self.contentHeight)
                     .mask(self.arrowCutoutMask)
                 
                 ZStack {
                     content
-                        .padding(self.config.contentPaddingEdgeInsets)
+                        .padding(config.contentPaddingEdgeInsets)
                         .fixedSize()
                 }
                 .background(self.sizeMeasurer)
