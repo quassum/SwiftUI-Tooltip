@@ -123,8 +123,8 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         GeometryReader { g in
             Text("")
                 .onAppear {
-                    self.contentWidth = g.size.width
-                    self.contentHeight = g.size.height
+                    self.contentWidth = config.width ?? g.size.width
+                    self.contentHeight = config.height ?? g.size.height
                 }
         }
     }
@@ -179,18 +179,31 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
             ZStack {
                 RoundedRectangle(cornerRadius: config.borderRadius)
                     .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
-                    .background(RoundedRectangle(cornerRadius: config.borderRadius)
-                                .foregroundColor(config.backgroundColor))
-                    .frame(width: self.contentWidth, height: self.contentHeight)
+                    .frame(
+                        minWidth: contentWidth,
+                        idealWidth: contentWidth,
+                        maxWidth: config.width,
+                        minHeight: contentHeight,
+                        idealHeight: contentHeight,
+                        maxHeight: config.height
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: config.borderRadius)
+                            .foregroundColor(config.backgroundColor)
+                    )
                     .mask(self.arrowCutoutMask)
                 
                 ZStack {
                     content
                         .padding(config.contentPaddingEdgeInsets)
-                        .fixedSize()
+                        .frame(
+                            width: config.width,
+                            height: config.height
+                        )
+                        .fixedSize(horizontal: config.width == nil, vertical: true)
                 }
                 .background(self.sizeMeasurer)
-                    .overlay(self.arrowView)
+                .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
             .animation(self.animation)
@@ -212,10 +225,12 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
+        config.enableAnimation = false
 //        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
-        config.enableAnimation = true
-        config.animationOffset = 10
-        config.animationTime = 1
+//        config.animationOffset = 10
+//        config.animationTime = 1
+//        config.width = 120
+//        config.height = 80
         
         
         return VStack {
