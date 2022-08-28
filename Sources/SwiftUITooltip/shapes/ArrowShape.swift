@@ -18,3 +18,9 @@ public struct ArrowShape: Shape {
         return path
     }
 }
+
+struct ArrowShape_Preview: PreviewProvider {
+    static var previews: some View {
+        ArrowShape().stroke()
+    }
+}
