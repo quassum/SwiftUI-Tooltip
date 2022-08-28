@@ -12,6 +12,10 @@ public struct ArrowOnlyTooltipConfig: TooltipConfig {
 
     public var side: TooltipSide = .bottom
     public var margin: CGFloat = 8
+    public var zIndex: Double = 10000
+        
+    public var width: CGFloat?
+    public var height: CGFloat?
 
     public var borderRadius: CGFloat = 8
     public var borderWidth: CGFloat = 0
@@ -39,6 +43,7 @@ public struct ArrowOnlyTooltipConfig: TooltipConfig {
     public var enableAnimation: Bool = false
     public var animationOffset: CGFloat = 10
     public var animationTime: Double = 1
+    public var animation: Optional<Animation> = .easeInOut
 
     public var transition: AnyTransition = .opacity
 

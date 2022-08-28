@@ -12,6 +12,11 @@ public protocol TooltipConfig {
 
     var side: TooltipSide { get set }
     var margin: CGFloat { get set }
+    var zIndex: Double { get set }
+    
+    // MARK: - Sizes
+    var width: CGFloat? { get set }
+    var height: CGFloat? { get set }
 
     // MARK: - Tooltip container
 
@@ -39,6 +44,7 @@ public protocol TooltipConfig {
     var enableAnimation: Bool { get set }
     var animationOffset: CGFloat { get set }
     var animationTime: Double { get set }
+    var animation: Optional<Animation> { get set }
 
     var transition: AnyTransition { get set }
 }
