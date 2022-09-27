@@ -26,6 +26,10 @@ After you added the package, all you need to do is import it and you can add a t
 
 ## Usage
 
+### Step 1
+
+⭐️ Start this repo! ⭐️
+
 ### Basic use case
 
 As the first example, the `Text` view is provided as the tooltip content and it's attached to the other `Text` view.
