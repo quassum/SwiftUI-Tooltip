@@ -179,14 +179,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
             ZStack {
                 RoundedRectangle(cornerRadius: config.borderRadius)
                     .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
-                    .frame(
-                        minWidth: contentWidth,
-                        idealWidth: contentWidth,
-                        maxWidth: config.width,
-                        minHeight: contentHeight,
-                        idealHeight: contentHeight,
-                        maxHeight: config.height
-                    )
+                    .frame(width: contentWidth, height: contentHeight)
                     .background(
                         RoundedRectangle(cornerRadius: config.borderRadius)
                             .foregroundColor(config.backgroundColor)
