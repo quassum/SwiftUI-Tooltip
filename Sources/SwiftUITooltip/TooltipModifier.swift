@@ -177,7 +177,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     var tooltipBody: some View {
         GeometryReader { g in
             ZStack {
-                RoundedRectangle(cornerRadius: config.borderRadius)
+                RoundedRectangle(cornerRadius: config.borderRadius, style: config.borderStyle)
                     .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
                     .frame(width: contentWidth, height: contentHeight)
                     .background(
@@ -199,6 +199,10 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
+            .shadow(color: config.shadowColor,
+                    radius: config.shadowRadius,
+                    x: config.shadowOffset.x,
+                    y: config.shadowOffset.y)
             .animation(self.animation)
             .zIndex(config.zIndex)
             .onAppear {
