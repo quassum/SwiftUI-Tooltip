@@ -185,6 +185,10 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                             .foregroundColor(config.backgroundColor)
                     )
                     .mask(self.arrowCutoutMask)
+                    .shadow(color: config.shadowColor,
+                            radius: config.shadowRadius,
+                            x: config.shadowOffset.x,
+                            y: config.shadowOffset.y)
                 
                 ZStack {
                     content
@@ -199,10 +203,6 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 .overlay(self.arrowView)
             }
             .offset(x: self.offsetHorizontal(g), y: self.offsetVertical(g))
-            .shadow(color: config.shadowColor,
-                    radius: config.shadowRadius,
-                    x: config.shadowOffset.x,
-                    y: config.shadowOffset.y)
             .animation(self.animation)
             .zIndex(config.zIndex)
             .onAppear {
@@ -223,11 +223,14 @@ struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
         config.enableAnimation = false
-//        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
+        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
 //        config.animationOffset = 10
 //        config.animationTime = 1
 //        config.width = 120
 //        config.height = 80
+        config.shadowColor = .black.opacity(0.5)
+        config.shadowRadius = 5
+        config.shadowOffset = CGPoint(x: 2, y: 4)
         
         
         return VStack {
