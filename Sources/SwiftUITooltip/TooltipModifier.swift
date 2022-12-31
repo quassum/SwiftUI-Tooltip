@@ -177,7 +177,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
     var tooltipBody: some View {
         GeometryReader { g in
             ZStack {
-                RoundedRectangle(cornerRadius: config.borderRadius, style: config.borderStyle)
+                RoundedRectangle(cornerRadius: config.borderRadius, style: config.borderRadiusStyle)
                     .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
                     .frame(width: contentWidth, height: contentHeight)
                     .background(

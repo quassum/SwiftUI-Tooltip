@@ -21,7 +21,7 @@ public protocol TooltipConfig {
     // MARK: - Tooltip container
 
     var borderRadius: CGFloat { get set }
-    var borderStyle: RoundedCornerStyle { get set }
+    var borderRadiusStyle: RoundedCornerStyle { get set }
     var borderWidth: CGFloat { get set }
     var borderColor: Color { get set }
     var backgroundColor: Color { get set }
