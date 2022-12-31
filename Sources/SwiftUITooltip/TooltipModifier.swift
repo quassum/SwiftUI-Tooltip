@@ -228,9 +228,9 @@ struct Tooltip_Previews: PreviewProvider {
 //        config.animationTime = 1
 //        config.width = 120
 //        config.height = 80
-        config.shadowColor = .black.opacity(0.5)
-        config.shadowRadius = 5
-        config.shadowOffset = CGPoint(x: 2, y: 4)
+//        config.shadowColor = .black.opacity(0.5)
+//        config.shadowRadius = 5
+//        config.shadowOffset = CGPoint(x: 2, y: 4)
         
         
         return VStack {
