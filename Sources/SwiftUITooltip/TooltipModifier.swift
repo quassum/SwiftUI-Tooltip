@@ -223,7 +223,7 @@ struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
         var config = DefaultTooltipConfig(side: .top)
         config.enableAnimation = false
-        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
+//        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
 //        config.animationOffset = 10
 //        config.animationTime = 1
 //        config.width = 120
