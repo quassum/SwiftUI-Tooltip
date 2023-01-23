@@ -18,9 +18,13 @@ public struct ArrowOnlyTooltipConfig: TooltipConfig {
     public var height: CGFloat?
 
     public var borderRadius: CGFloat = 8
+    public var borderRadiusStyle: RoundedCornerStyle = .circular
     public var borderWidth: CGFloat = 0
     public var borderColor: Color = Color.primary
     public var backgroundColor: Color = Color.clear
+    public var shadowColor: Color = .clear
+    public var shadowRadius: CGFloat = 0
+    public var shadowOffset: CGPoint = .zero
 
     public var contentPaddingLeft: CGFloat = 8
     public var contentPaddingRight: CGFloat = 8
