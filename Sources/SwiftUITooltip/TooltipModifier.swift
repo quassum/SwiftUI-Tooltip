@@ -142,22 +142,22 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
             .offset(x: self.arrowOffsetX, y: self.arrowOffsetY))
     }
 
-    private func arrowShape(angle: Double, borderColor: Color? = nil) -> some View {
+    private func arrowShape(angle: Double, borderColor: Color? = nil) -> AnyView {
         switch config.arrowType {
         case .default:
             let shape = ArrowShape()
                 .rotation(Angle(radians: angle))
             if let borderColor {
-                return shape.stroke(borderColor)
+                return AnyView(shape.stroke(borderColor))
             }
-            return shape
-        case .curve:
-            let shape = CurveArrowShape()
+            return AnyView(shape)
+        case .curveIn:
+            let shape = CurveInArrowShape()
                 .rotation(Angle(radians: angle))
             if let borderColor {
-                return shape.stroke(borderColor)
+                return AnyView(shape.stroke(borderColor))
             }
-            return shape
+            return AnyView(shape)
         }
     }
 
@@ -251,19 +251,19 @@ struct Tooltip_Previews: PreviewProvider {
         config4.arrowWidth = 24
         config4.arrowHeight = 8
         config4.backgroundColor = .black
-        config4.arrowType = .curve
+        config4.arrowType = .curveIn
 
         var config5 = DefaultTooltipConfig(side: side)
         config5.arrowWidth = 24
         config5.arrowHeight = 8
-        config5.arrowType = .curve
+        config5.arrowType = .curveIn
 
         var config6 = DefaultTooltipConfig(side: side)
         config6.arrowWidth = 24
         config6.arrowHeight = 8
         config6.backgroundColor = .green
         config6.borderColor = .red
-        config6.arrowType = .curve
+        config6.arrowType = .curveIn
         
         return VStack {
             HStack {

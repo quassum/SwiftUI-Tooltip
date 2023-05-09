@@ -8,7 +8,7 @@
 import SwiftUI
 
 public enum ArrowType {
-    case `default`, curve
+    case `default`, curveIn
 }
 
 public protocol TooltipConfig {

@@ -1,5 +1,5 @@
 //
-//  CurveArrowShape.swift
+//  CurveInArrowShape.swift
 //
 //  Created by Denis S. Morozov on 09/05/2023.
 //  Copyright © 2023 Quassum Manus. All rights reserved.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct CurveArrowShape: Shape {
+public struct CurveInArrowShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: 0, y: rect.height))
@@ -23,8 +23,8 @@ public struct CurveArrowShape: Shape {
     }
 }
 
-struct CurveArrowShape_Preview: PreviewProvider {
+struct CurveInArrowShape_Preview: PreviewProvider {
     static var previews: some View {
-        CurveArrowShape().stroke()
+        CurveInArrowShape().stroke()
     }
 }
