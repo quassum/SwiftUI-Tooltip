@@ -133,18 +133,32 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
         guard let arrowAngle = config.side.getArrowAngleRadians() else {
             return AnyView(EmptyView())
         }
-        
-        return AnyView(ArrowShape()
-            .rotation(Angle(radians: arrowAngle))
-            .stroke(config.borderColor)
-            .background(ArrowShape()
-                .offset(x: 0, y: 1)
-                .rotation(Angle(radians: arrowAngle))
-                .frame(width: config.arrowWidth+2, height: config.arrowHeight+1)
+
+        return AnyView(arrowShape(angle: arrowAngle, borderColor: config.borderColor)
+            .background(arrowShape(angle: arrowAngle)
+                .frame(width: config.arrowWidth, height: config.arrowHeight)
                 .foregroundColor(config.backgroundColor)
-                
             ).frame(width: config.arrowWidth, height: config.arrowHeight)
-            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY))
+            .offset(x: CGFloat(Int(self.arrowOffsetX)), y: CGFloat(Int(self.arrowOffsetY))))
+    }
+
+    private func arrowShape(angle: Double, borderColor: Color? = nil) -> AnyView {
+        switch config.arrowType {
+        case .default:
+            let shape = ArrowShape()
+                .rotation(Angle(radians: angle))
+            if let borderColor {
+                return AnyView(shape.stroke(borderColor))
+            }
+            return AnyView(shape)
+        case .curveIn:
+            let shape = CurveInArrowShape()
+                .rotation(Angle(radians: angle))
+            if let borderColor {
+                return AnyView(shape.stroke(borderColor))
+            }
+            return AnyView(shape)
+        }
     }
 
     private var arrowCutoutMask: some View {
@@ -180,11 +194,11 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 RoundedRectangle(cornerRadius: config.borderRadius, style: config.borderRadiusStyle)
                     .stroke(config.borderWidth == 0 ? Color.clear : config.borderColor)
                     .frame(width: contentWidth, height: contentHeight)
+                    .mask(self.arrowCutoutMask)
                     .background(
                         RoundedRectangle(cornerRadius: config.borderRadius)
                             .foregroundColor(config.backgroundColor)
                     )
-                    .mask(self.arrowCutoutMask)
                     .shadow(color: config.shadowColor,
                             radius: config.shadowRadius,
                             x: config.shadowOffset.x,
@@ -221,22 +235,68 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
 
 struct Tooltip_Previews: PreviewProvider {
     static var previews: some View {
-        var config = DefaultTooltipConfig(side: .top)
-        config.enableAnimation = false
-//        config.backgroundColor = Color(red: 0.8, green: 0.9, blue: 1)
-//        config.animationOffset = 10
-//        config.animationTime = 1
-//        config.width = 120
-//        config.height = 80
-//        config.shadowColor = .black.opacity(0.5)
-//        config.shadowRadius = 5
-//        config.shadowOffset = CGPoint(x: 2, y: 4)
-        
+
+        let side: TooltipSide = .top
+
+        var config1 = DefaultTooltipConfig(side: side)
+        config1.backgroundColor = .black
+
+        let config2 = DefaultTooltipConfig(side: side)
+
+        var config3 = DefaultTooltipConfig(side: side)
+        config3.backgroundColor = .green
+        config3.borderColor = .red
+
+        var config4 = DefaultTooltipConfig(side: side)
+        config4.arrowWidth = 24
+        config4.arrowHeight = 8
+        config4.backgroundColor = .black
+        config4.arrowType = .curveIn
+
+        var config5 = DefaultTooltipConfig(side: side)
+        config5.arrowWidth = 24
+        config5.arrowHeight = 8
+        config5.arrowType = .curveIn
+
+        var config6 = DefaultTooltipConfig(side: side)
+        config6.arrowWidth = 24
+        config6.arrowHeight = 8
+        config6.backgroundColor = .green
+        config6.borderColor = .red
+        config6.arrowType = .curveIn
         
         return VStack {
-            Text("Say...").tooltip(config: config) {
-                Text("Something nice!")
+            HStack {
+                Text("Say...").tooltip(config: config1) {
+                    Text("Something nice!")
+                        .foregroundColor(.white)
+                }.padding(54)
+                Text("Say...").tooltip(config: config4) {
+                    Text("Something nice!")
+                        .foregroundColor(.white)
+                }.padding(54)
             }
-        }.previewDevice(.init(stringLiteral: "iPhone 12 mini"))
+            HStack {
+                Text("Say...").tooltip(config: config2) {
+                    Text("Something nice!")
+                        .foregroundColor(.black)
+                }.padding(54)
+                Text("Say...").tooltip(config: config5) {
+                    Text("Something nice!")
+                        .foregroundColor(.black)
+                }.padding(54)
+            }
+            HStack {
+                Text("Say...").tooltip(config: config3) {
+                    Text("Something nice!")
+                        .foregroundColor(.black)
+                }.padding(54)
+                Text("Say...").tooltip(config: config6) {
+                    Text("Something nice!")
+                        .foregroundColor(.black)
+                }.padding(54)
+            }
+        }
+        .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
     }
 }

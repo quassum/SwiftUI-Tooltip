@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+public enum ArrowType {
+    case `default`, curveIn
+}
+
 public protocol TooltipConfig {
     // MARK: - Alignment
 
@@ -43,6 +47,7 @@ public protocol TooltipConfig {
     var showArrow: Bool { get set }
     var arrowWidth: CGFloat { get set }
     var arrowHeight: CGFloat { get set }
+    var arrowType: ArrowType { get set }
     
     // MARK: - Animation settings
     var enableAnimation: Bool { get set }

@@ -43,6 +43,7 @@ public struct DefaultTooltipConfig: TooltipConfig {
     public var showArrow: Bool = true
     public var arrowWidth: CGFloat = 12
     public var arrowHeight: CGFloat = 6
+    public var arrowType: ArrowType = .default
     
     public var enableAnimation: Bool = false
     public var animationOffset: CGFloat = 10
