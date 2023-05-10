@@ -139,7 +139,7 @@ struct TooltipModifier<TooltipContent: View>: ViewModifier {
                 .frame(width: config.arrowWidth, height: config.arrowHeight)
                 .foregroundColor(config.backgroundColor)
             ).frame(width: config.arrowWidth, height: config.arrowHeight)
-            .offset(x: self.arrowOffsetX, y: self.arrowOffsetY))
+            .offset(x: CGFloat(Int(self.arrowOffsetX)), y: CGFloat(Int(self.arrowOffsetY))))
     }
 
     private func arrowShape(angle: Double, borderColor: Color? = nil) -> AnyView {
